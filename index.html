@@ -1,282 +1,998 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atlas Honda Motorcycles - Pakistan</title>
-    <style>
-        :root {
-            --primary-color: #d32f2f; /* Honda Red */
-            --bg-color: #f4f7f6;
-            --text-color: #333;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MIANWALI HONDA CENTER</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-        }
+    :root {
+      --red: #CC0000;
+      --dark-red: #990000;
+      --black: #0a0a0a;
+      --dark: #111111;
+      --dark2: #1a1a1a;
+      --gray: #2a2a2a;
+      --light-gray: #888;
+      --white: #ffffff;
+      --cream: #f5f3ee;
+      --gold: #c9a84c;
+    }
 
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 1.5rem 0;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
+    html { scroll-behavior: smooth; }
 
-        header h1 {
-            margin: 0;
-            font-size: 2.2rem;
-        }
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      overflow-x: hidden;
+    }
 
-        .gallery-container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 25px;
-        }
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(204,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 64px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .nav-logo img {
+      height: 32px;
+      filter: brightness(0) invert(1);
+    }
+    .nav-brand {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.1em;
+      color: var(--white);
+      line-height: 1.1;
+    }
+    .nav-brand span { color: var(--red); }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: #bbb;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--red); }
 
-        .bike-card {
-            background: white;
-            width: 280px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(135deg, rgba(10,10,10,0.92) 0%, rgba(153,0,0,0.15) 100%),
+        radial-gradient(ellipse at 70% 50%, rgba(204,0,0,0.12) 0%, transparent 60%),
+        #0a0a0a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 40px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23cc0000' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--red);
+      color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 5px 18px;
+      border-radius: 2px;
+      margin-bottom: 20px;
+    }
+    .hero-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      line-height: 0.92;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .hero-title .accent { color: var(--red); }
+    .hero-title .line2 {
+      display: block;
+      font-size: clamp(2rem, 5vw, 4rem);
+      color: #ccc;
+      font-weight: 700;
+    }
+    .hero-sub {
+      font-size: 1rem;
+      color: var(--light-gray);
+      font-weight: 400;
+      margin: 18px 0 36px;
+      letter-spacing: 0.03em;
+    }
+    .hero-cta {
+      display: inline-block;
+      background: var(--red);
+      color: #fff;
+      text-decoration: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 14px 38px;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .hero-cta:hover { background: var(--dark-red); transform: translateY(-2px); }
+    .scroll-hint {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: #555;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      animation: bounce 2s infinite;
+    }
+    .scroll-hint::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--red), transparent);
+    }
+    @keyframes bounce {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
 
-        .bike-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
-        }
+    /* ── SECTION TITLES ── */
+    .section { padding: 80px 40px; }
+    .section-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .section-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--white);
+    }
+    .section-title em {
+      font-style: normal;
+      color: var(--red);
+    }
 
-        .bike-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-bottom: 3px solid var(--primary-color);
-        }
+    /* ── BIKE GRID ── */
+    #bikes { background: var(--dark); }
+    .bikes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 2px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .bike-card {
+      background: var(--dark2);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+    .bike-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(204,0,0,0.2);
+      z-index: 2;
+    }
+    .bike-card:hover .card-img img { transform: scale(1.06); }
+    .bike-card:hover .card-overlay { opacity: 1; }
+    .card-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      background: #161616;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform 0.4s ease;
+      filter: drop-shadow(0 8px 24px rgba(0,0,0,0.5));
+    }
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(204,0,0,0.85) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+    }
+    .card-overlay-text {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+    .card-body { padding: 20px 20px 24px; }
+    .card-cc {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 4px;
+    }
+    .card-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .card-price {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--gold);
+      letter-spacing: 0.03em;
+    }
+    .card-price span {
+      font-size: 0.8rem;
+      color: var(--light-gray);
+      font-weight: 400;
+      margin-left: 4px;
+    }
+    .view-detail {
+      margin-top: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--red);
+    }
+    .view-detail::after { content: '→'; }
 
-        .bike-info {
-            padding: 15px;
-            text-align: center;
-        }
+    /* ── MODAL ── */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.88);
+      z-index: 2000;
+      backdrop-filter: blur(6px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-backdrop.active { display: flex; }
+    .modal {
+      background: var(--dark2);
+      max-width: 900px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,0.07);
+      animation: slideUp 0.35s cubic-bezier(0.22,1,0.36,1);
+      position: relative;
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(40px) scale(0.97); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .modal-close {
+      position: absolute;
+      top: 16px; right: 20px;
+      background: none;
+      border: none;
+      color: #888;
+      font-size: 1.6rem;
+      cursor: pointer;
+      z-index: 10;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+    .modal-close:hover { color: var(--red); }
+    .modal-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .modal-img-pane {
+      background: #161616;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      min-height: 320px;
+    }
+    .modal-img-pane img {
+      width: 100%;
+      max-height: 280px;
+      object-fit: contain;
+      filter: drop-shadow(0 12px 36px rgba(0,0,0,0.6));
+    }
+    .modal-info { padding: 36px 32px; }
+    .modal-cc {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 6px;
+    }
+    .modal-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 2.4rem;
+      text-transform: uppercase;
+      line-height: 1;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .modal-tagline {
+      font-size: 0.88rem;
+      color: #999;
+      margin-bottom: 20px;
+    }
+    .modal-price-box {
+      background: rgba(204,0,0,0.1);
+      border: 1px solid rgba(204,0,0,0.3);
+      border-radius: 3px;
+      padding: 14px 18px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+    .modal-price-label { font-size: 0.72rem; color: #888; letter-spacing: 0.1em; text-transform: uppercase; }
+    .modal-price-val {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1.9rem;
+      color: var(--gold);
+      letter-spacing: 0.02em;
+    }
+    .modal-specs-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #777;
+      margin-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding-bottom: 8px;
+    }
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      font-size: 0.84rem;
+    }
+    .spec-row:last-child { border-bottom: none; }
+    .spec-label { color: #888; font-weight: 400; }
+    .spec-val { color: var(--white); font-weight: 600; text-align: right; }
+    .modal-colors { margin-top: 18px; }
+    .modal-colors-label { font-size: 0.72rem; color: #777; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+    .color-dots { display: flex; gap: 8px; flex-wrap: wrap; }
+    .color-dot {
+      width: 22px; height: 22px; border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.15);
+      cursor: pointer;
+      transition: transform 0.15s, border-color 0.15s;
+    }
+    .color-dot:hover { transform: scale(1.2); border-color: rgba(255,255,255,0.5); }
 
-        .bike-info h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.4rem;
-        }
+    /* ── ABOUT ── */
+    #about { background: var(--black); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      max-width: 1100px;
+      margin: 0 auto;
+      align-items: start;
+    }
+    .about-text h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 2rem;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .about-text p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: #aaa;
+      margin-bottom: 12px;
+    }
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 28px;
+    }
+    .stat-box {
+      background: var(--dark2);
+      padding: 20px;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 2.4rem;
+      color: var(--red);
+      line-height: 1;
+    }
+    .stat-label { font-size: 0.75rem; color: #888; margin-top: 4px; letter-spacing: 0.08em; }
 
-        .bike-info p {
-            margin: 0;
-            color: var(--primary-color);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
+    /* ── CONTACT ── */
+    #contact { background: var(--dark); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .contact-card {
+      background: var(--dark2);
+      padding: 32px;
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+    .contact-icon {
+      width: 44px; height: 44px;
+      background: rgba(204,0,0,0.12);
+      border: 1px solid rgba(204,0,0,0.25);
+      border-radius: 3px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px;
+      font-size: 1.3rem;
+    }
+    .contact-card h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #777;
+      margin-bottom: 8px;
+    }
+    .contact-card p, .contact-card a {
+      font-size: 0.9rem;
+      color: var(--white);
+      text-decoration: none;
+      line-height: 1.6;
+    }
+    .contact-card a:hover { color: var(--red); }
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      padding: 4px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-day { color: #888; }
+    .hours-time { color: var(--white); font-weight: 500; }
+    .open-badge {
+      display: inline-block;
+      background: rgba(0,180,0,0.15);
+      border: 1px solid rgba(0,180,0,0.3);
+      color: #4ade80;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 2px;
+      margin-left: 6px;
+    }
 
-        /* Detail Section */
-        #details-section {
-            display: none;
-            max-width: 900px;
-            margin: 40px auto 60px;
-            background: white;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-            text-align: center;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
+    /* ── MAP SECTION ── */
+    .map-section {
+      height: 340px;
+      background: var(--dark2);
+      position: relative;
+      overflow: hidden;
+    }
+    .map-section iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      filter: invert(90%) hue-rotate(180deg) saturate(0.6);
+      opacity: 0.85;
+    }
+    .map-overlay {
+      position: absolute;
+      top: 20px; left: 20px;
+      background: rgba(10,10,10,0.9);
+      border: 1px solid rgba(204,0,0,0.3);
+      padding: 14px 20px;
+      border-radius: 3px;
+      backdrop-filter: blur(8px);
+    }
+    .map-overlay strong {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .map-overlay span { font-size: 0.78rem; color: #aaa; }
 
-        #details-section.active {
-            display: block;
-            opacity: 1;
-        }
+    /* ── FOOTER ── */
+    footer {
+      background: #050505;
+      padding: 28px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-brand {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .footer-brand span { color: var(--red); }
+    footer p { font-size: 0.75rem; color: #555; }
+    .footer-honda {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.75rem; color: #555;
+    }
+    .footer-honda img { height: 18px; filter: brightness(0) invert(0.4); }
 
-        #detail-img {
-            max-width: 100%;
-            height: 350px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-
-        #detail-name {
-            font-size: 2rem;
-            margin-bottom: 5px;
-        }
-
-        #detail-price {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            font-weight: bold;
-            margin-bottom: 25px;
-        }
-
-        .specs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-        }
-
-        .spec-box {
-            background: #f9f9f9;
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid #eee;
-        }
-
-        .spec-box h4 {
-            margin: 0 0 8px 0;
-            color: #666;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-        }
-
-        .spec-box p {
-            margin: 0;
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-    </style>
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 90px 24px 50px; }
+      .section { padding: 60px 20px; }
+      .modal-layout { grid-template-columns: 1fr; }
+      .modal-img-pane { min-height: 220px; }
+      .about-grid { grid-template-columns: 1fr; gap: 36px; }
+      .contact-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 10px; text-align: center; }
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <h1>Atlas Honda Motorcycles</h1>
-        <p>Explore the Latest Models & Prices</p>
-    </header>
+<nav>
+  <div class="nav-logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Honda_Logo.svg/1024px-Honda_Logo.svg.png" alt="Honda" onerror="this.style.display='none'"/>
+    <div class="nav-brand">MIANWALI <span>HONDA</span><br>CENTER</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#bikes">Our Bikes</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-    <div class="gallery-container">
-        <div class="bike-card" onclick="showBikeDetails('cd70')">
-            <img src="https://placehold.co/600x400/eeeeee/d32f2f?text=Honda+CD+70" alt="Honda CD 70">
-            <div class="bike-info">
-                <h3>Honda CD 70</h3>
-                <p>PKR 159,900</p>
-            </div>
-        </div>
+<section class="hero">
+  <div class="hero-badge">Authorized Atlas Honda Dealer</div>
+  <h1 class="hero-title">
+    MIANWALI <span class="accent">HONDA</span>
+    <span class="line2">CENTER</span>
+  </h1>
+  <p class="hero-sub">Your trusted Honda dealership in Mianwali · Genuine Bikes · Spare Parts · Service</p>
+  <a href="#bikes" class="hero-cta">Explore All Bikes</a>
+  <div class="scroll-hint">Scroll</div>
+</section>
 
-        <div class="bike-card" onclick="showBikeDetails('pridor')">
-            <img src="https://placehold.co/600x400/eeeeee/d32f2f?text=Honda+Pridor" alt="Honda Pridor">
-            <div class="bike-info">
-                <h3>Honda Pridor</h3>
-                <p>PKR 211,900</p>
-            </div>
-        </div>
+<section class="section" id="bikes">
+  <div class="section-header">
+    <p class="section-tag">Our Fleet</p>
+    <h2 class="section-title">Latest <em>Honda</em> Models</h2>
+  </div>
+  <div class="bikes-grid" id="bikeGrid"></div>
+</section>
 
-        <div class="bike-card" onclick="showBikeDetails('cg125')">
-            <img src="https://placehold.co/600x400/eeeeee/d32f2f?text=Honda+CG+125" alt="Honda CG 125">
-            <div class="bike-info">
-                <h3>Honda CG 125</h3>
-                <p>PKR 238,500</p>
-            </div>
-        </div>
-
-        <div class="bike-card" onclick="showBikeDetails('cb150f')">
-            <img src="https://placehold.co/600x400/eeeeee/d32f2f?text=Honda+CB+150F" alt="Honda CB 150F">
-            <div class="bike-info">
-                <h3>Honda CB 150F</h3>
-                <p>PKR 499,900</p>
-            </div>
-        </div>
+<section class="section" id="about">
+  <div class="about-grid">
+    <div class="about-text">
+      <div class="section-tag">About Us</div>
+      <h3>Your Trusted <em style="color:var(--red)">Honda</em> Partner in Mianwali</h3>
+      <p>MIANWALI HONDA CENTER is an authorized Atlas Honda dealership located near PAF Gate on Sargodha Road, Mianwali. We are committed to delivering genuine Honda motorcycles, original spare parts, and professional service to our valued customers.</p>
+      <p>As an authorized dealer, every bike we sell comes with a manufacturer's warranty and is backed by Atlas Honda's trusted quality standards. Whether you're looking for a daily commuter or a premium ride, we have the right Honda for you.</p>
     </div>
-
-    <div id="details-section">
-        <img id="detail-img" src="" alt="Bike Image">
-        <h2 id="detail-name">Bike Name</h2>
-        <div id="detail-price">Price</div>
-
-        <div class="specs-grid">
-            <div class="spec-box">
-                <h4>Engine</h4>
-                <p id="detail-engine">--</p>
-            </div>
-            <div class="spec-box">
-                <h4>Transmission</h4>
-                <p id="detail-transmission">--</p>
-            </div>
-            <div class="spec-box">
-                <h4>Dry Weight</h4>
-                <p id="detail-weight">--</p>
-            </div>
-            <div class="spec-box">
-                <h4>Starting</h4>
-                <p id="detail-starting">--</p>
-            </div>
-        </div>
+    <div class="about-stats">
+      <div class="stat-box">
+        <div class="stat-num">7+</div>
+        <div class="stat-label">Models Available</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Genuine Parts</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">AUTH</div>
+        <div class="stat-label">Atlas Honda Dealer</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">Customer Support</div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <script>
-        // Database of bikes extracted directly from Atlas Honda official specs
-        const bikesData = {
-            'cd70': {
-                name: 'Honda CD 70',
-                price: 'PKR 159,900',
-                image: 'https://placehold.co/900x500/eeeeee/d32f2f?text=Honda+CD+70',
-                engine: '4-Stroke OHC Air Cooled 72 cm3',
-                transmission: '4 Speed Constant Mesh',
-                weight: '82 kg',
-                starting: 'Kick Start'
-            },
-            'pridor': {
-                name: 'Honda Pridor',
-                price: 'PKR 211,900',
-                image: 'https://placehold.co/900x500/eeeeee/d32f2f?text=Honda+Pridor',
-                engine: '4-Stroke OHC Air-Cooled 97.1 cm3',
-                transmission: '4 Speed Constant Mesh',
-                weight: '96 kg',
-                starting: 'Kick Start'
-            },
-            'cg125': {
-                name: 'Honda CG 125',
-                price: 'PKR 238,500',
-                image: 'https://placehold.co/900x500/eeeeee/d32f2f?text=Honda+CG+125',
-                engine: '4-Stroke OHV Air Cooled 125 cc',
-                transmission: '4 Speed Constant Mesh',
-                weight: '100 kg',
-                starting: 'Kick Start'
-            },
-            'cb150f': {
-                name: 'Honda CB 150F',
-                price: 'PKR 499,900',
-                image: 'https://placehold.co/900x500/eeeeee/d32f2f?text=Honda+CB+150F',
-                engine: '4-Stroke SOHC Air Cooled 150 cc',
-                transmission: '5 Speed Constant Mesh',
-                weight: '124 kg',
-                starting: 'Self Start / Kick Start'
-            }
-        };
+<section class="section" id="contact">
+  <div class="section-header">
+    <p class="section-tag">Find Us</p>
+    <h2 class="section-title">Visit <em>Our</em> Showroom</h2>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="contact-icon">📍</div>
+      <h4>Address</h4>
+      <p>Near PAF Gate,<br>Sargodha Road, Mianwali<br>Punjab, Pakistan</p>
+    </div>
+    <div class="contact-card">
+      <div class="contact-icon">📞</div>
+      <h4>Contact</h4>
+      <p>
+        <a href="tel:+924593505640">+92 459 350564</a><br><br>
+        <a href="mailto:mianwalihondacentre@gmail.com">mianwalihondacentre@gmail.com</a>
+      </p>
+    </div>
+    <div class="contact-card">
+      <div class="contact-icon">🕐</div>
+      <h4>Working Hours <span class="open-badge">Open</span></h4>
+      <div class="hours-row"><span class="hours-day">Mon – Thu</span><span class="hours-time">9:00 AM – 8:00 PM</span></div>
+      <div class="hours-row"><span class="hours-day">Friday</span><span class="hours-time">9:00 AM – 1:00 PM, 3:00 – 8:00 PM</span></div>
+      <div class="hours-row"><span class="hours-day">Saturday</span><span class="hours-time">9:00 AM – 8:00 PM</span></div>
+      <div class="hours-row"><span class="hours-day">Sunday</span><span class="hours-time">10:00 AM – 6:00 PM</span></div>
+    </div>
+  </div>
+</section>
 
-        function showBikeDetails(bikeId) {
-            const bike = bikesData[bikeId];
-            const detailsSection = document.getElementById('details-section');
+<div class="map-section">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3384.2!2d71.5368!3d32.5821!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3927183d7d0e5555%3A0x1195bae394d1a290!2sMianwali+Honda+Centre!5e0!3m2!1sen!2spk!4v1713600000000"
+    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+  <div class="map-overlay">
+    <strong>MIANWALI HONDA CENTER</strong>
+    <span>Near PAF Gate, Sargodha Road, Mianwali</span>
+  </div>
+</div>
 
-            // Populate the details dynamically
-            document.getElementById('detail-img').src = bike.image;
-            document.getElementById('detail-name').textContent = bike.name;
-            document.getElementById('detail-price').textContent = bike.price;
-            document.getElementById('detail-engine').textContent = bike.engine;
-            document.getElementById('detail-transmission').textContent = bike.transmission;
-            document.getElementById('detail-weight').textContent = bike.weight;
-            document.getElementById('detail-starting').textContent = bike.starting;
+<footer>
+  <div class="footer-brand">MIANWALI <span>HONDA</span> CENTER</div>
+  <p>© 2026 Mianwali Honda Center. Authorized Atlas Honda Dealer.</p>
+  <div class="footer-honda">
+    Powered by
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Honda_Logo.svg/1024px-Honda_Logo.svg.png" alt="Honda" onerror="this.style.display='none'"/>
+    Atlas Honda
+  </div>
+</footer>
 
-            // Make the section visible
-            detailsSection.classList.add('active');
+<div class="modal-backdrop" id="modalBackdrop" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="closeModalDirect()">✕</button>
+    <div class="modal-layout">
+      <div class="modal-img-pane">
+        <img id="modalImg" src="" alt="Bike"/>
+      </div>
+      <div class="modal-info">
+        <div class="modal-cc" id="modalCC"></div>
+        <div class="modal-name" id="modalName"></div>
+        <div class="modal-tagline" id="modalTagline"></div>
+        <div class="modal-price-box">
+          <span class="modal-price-label">Ex-Factory Price</span>
+          <span class="modal-price-val" id="modalPrice"></span>
+        </div>
+        <div class="modal-specs-title">Technical Specifications</div>
+        <div id="modalSpecs"></div>
+        <div class="modal-colors" id="modalColorsWrap">
+          <div class="modal-colors-label">Available Colors</div>
+          <div class="color-dots" id="modalColors"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-            // Dynamic Smooth Scrolling to the detailed view
-            detailsSection.scrollIntoView({ 
-                behavior: 'smooth', 
-                block: 'start' 
-            });
-        }
-    </script>
+<script>
+const bikes = [
+  {
+    id: "cd70",
+    name: "CD 70",
+    cc: "72cc · Commuter",
+    tagline: "The epitome of stylish ride and enduring reliability.",
+    price: "PKR 159,900",
+    img: "https://cache4.pakwheels.com/system/bike_model_pictures/1183/original/Honda_CD_70_Red.jpg",
+    specs: [
+      ["Engine", "4-Stroke, OHC, Air Cooled"],
+      ["Displacement", "72 cc"],
+      ["Bore × Stroke", "47.0 × 41.4 mm"],
+      ["Compression Ratio", "8.8 : 1"],
+      ["Transmission", "4-Speed Constant Mesh"],
+      ["Clutch", "Multiple Wet Clutch Plates"],
+      ["Fuel Average", "~70–75 km/L"],
+      ["Dry Weight", "82 kg"],
+      ["Dimensions (L×W×H)", "1897 × 751 × 1014 mm"],
+      ["Ground Clearance", "136 mm"],
+      ["Tyres (F/R)", "2.25–17 / 2.25–17"],
+      ["Brakes", "Drum (F & R)"],
+      ["Fuel Tank", "9.5 L"],
+    ],
+    colors: ["#CC0000", "#1a3a6e", "#1a1a1a"],
+    colorNames: ["Red", "Blue", "Black"]
+  },
+  {
+    id: "cd-dream",
+    name: "CD 70 Dream",
+    cc: "72cc · Lifestyle Commuter",
+    tagline: "Modern design, stylish ride — Live your dream, ride with style.",
+    price: "PKR 170,900",
+    img: "https://cache1.pakwheels.com/system/bike_model_pictures/1184/original/Honda_CD_70_Dream_2020.jpg",
+    specs: [
+      ["Engine", "4-Stroke, OHC, Air Cooled"],
+      ["Displacement", "72 cc"],
+      ["Bore × Stroke", "47.0 × 41.4 mm"],
+      ["Compression Ratio", "8.8 : 1"],
+      ["Transmission", "4-Speed Constant Mesh"],
+      ["Clutch", "Multiple Wet Clutch Plates"],
+      ["Fuel Average", "~70–75 km/L"],
+      ["Dry Weight", "~85 kg"],
+      ["Dimensions (L×W×H)", "1907 × 760 × 1080 mm"],
+      ["Ground Clearance", "136 mm"],
+      ["Brakes", "Drum (F & R)"],
+      ["Fuel Tank", "9.5 L"],
+    ],
+    colors: ["#c0c0c0", "#CC0000", "#1a1a1a"],
+    colorNames: ["Silver", "Red", "Black"]
+  },
+  {
+    id: "pridor",
+    name: "Pridor",
+    cc: "100cc · Daily Rider",
+    tagline: "High fuel efficiency and smooth comfort for daily commuters.",
+    price: "PKR 201,900",
+    img: "https://cache4.pakwheels.com/system/bike_model_pictures/1187/original/Honda_Pridor_2020.jpg",
+    specs: [
+      ["Engine", "4-Stroke, OHC, Air Cooled"],
+      ["Displacement", "97.1 cc"],
+      ["Bore × Stroke", "50.0 × 49.5 mm"],
+      ["Compression Ratio", "9.0 : 1"],
+      ["Transmission", "4-Speed Constant Mesh"],
+      ["Clutch", "Multiple Wet Clutch Plates"],
+      ["Fuel Average", "~55–60 km/L"],
+      ["Dry Weight", "~100 kg"],
+      ["Ground Clearance", "155 mm"],
+      ["Tyres (F/R)", "2.50–17 / 2.75–17"],
+      ["Brakes", "Drum (F & R)"],
+      ["Fuel Tank", "10.5 L"],
+    ],
+    colors: ["#1a3a6e", "#CC0000", "#1a1a1a"],
+    colorNames: ["Blue", "Red", "Black"]
+  },
+  {
+    id: "cg125",
+    name: "CG 125",
+    cc: "125cc · Iconic Classic",
+    tagline: "Unleash the thrill with power play. Pakistan's most trusted 125.",
+    price: "PKR 238,500",
+    img: "https://cache1.pakwheels.com/system/bike_model_pictures/1185/original/Honda_CG_125_2020.jpg",
+    specs: [
+      ["Engine", "4-Stroke, OHC, Air Cooled"],
+      ["Displacement", "124.1 cc"],
+      ["Bore × Stroke", "56.5 × 49.5 mm"],
+      ["Compression Ratio", "9.0 : 1"],
+      ["Transmission", "5-Speed Constant Mesh"],
+      ["Clutch", "Multiple Wet Clutch Plates"],
+      ["Fuel Average", "~45–50 km/L"],
+      ["Dry Weight", "~103 kg"],
+      ["Dimensions (L×W×H)", "1935 × 760 × 1070 mm"],
+      ["Ground Clearance", "155 mm"],
+      ["Tyres (F/R)", "2.75–17 / 3.00–17"],
+      ["Brakes", "Drum (F & R)"],
+      ["Fuel Tank", "12.0 L"],
+    ],
+    colors: ["#CC0000", "#1a1a1a"],
+    colorNames: ["Red", "Black"]
+  },
+  {
+    id: "cg150",
+    name: "CG 150",
+    cc: "150cc · Retro Power",
+    tagline: "Retro café-racer look with modern CBS brakes and LED headlight.",
+    price: "PKR 459,900",
+    img: "https://cache3.pakwheels.com/system/bike_model_pictures/1190/original/Honda_CB_125F_2020.jpg",
+    specs: [
+      ["Engine", "4-Stroke, SOHC, Air Cooled"],
+      ["Displacement", "149.5 cc"],
+      ["Compression Ratio", "9.5 : 1"],
+      ["Transmission", "5-Speed Constant Mesh"],
+      ["Brakes (Front)", "Disc (CBS)"],
+      ["Brakes (Rear)", "Drum (CBS)"],
+      ["Headlight", "LED"],
+      ["Fuel Average", "~40–45 km/L"],
+      ["Fuel Tank", "13.0 L"],
+      ["Style", "Retro Café-Racer"],
+    ],
+    colors: ["#2d5a2d", "#1a1a1a"],
+    colorNames: ["Green (2-Tone)", "Black"]
+  },
+  {
+    id: "cb150f",
+    name: "CB 150F",
+    cc: "150cc · Sport Tourer",
+    tagline: "Fuel your passion for adventure and conquer every horizon.",
+    price: "PKR 499,900",
+    img: "https://cache2.pakwheels.com/system/bike_model_pictures/1189/original/Honda_CB_150F_2020.jpg",
+    specs: [
+      ["Engine", "4-Stroke, SOHC, Air Cooled"],
+      ["Displacement", "149.15 cc"],
+      ["Bore × Stroke", "57.3 × 57.8 mm"],
+      ["Compression Ratio", "10.5 : 1"],
+      ["Max Power", "13.8 PS @ 8500 rpm"],
+      ["Max Torque", "12.8 Nm @ 6500 rpm"],
+      ["Transmission", "5-Speed Constant Mesh"],
+      ["Brakes (Front)", "Disc"],
+      ["Brakes (Rear)", "Drum"],
+      ["Fuel Average", "~40–45 km/L"],
+      ["Dry Weight", "~131 kg"],
+      ["Fuel Tank", "12.0 L"],
+    ],
+    colors: ["#c0c0c0", "#1a3a6e", "#CC0000", "#1a1a1a"],
+    colorNames: ["Silver", "Blue", "Red", "Black"]
+  },
+  {
+    id: "icon-e",
+    name: "ICON e:",
+    cc: "Electric · Zero Emission",
+    tagline: "Accelerate your lifestyle with quality powered by innovation.",
+    price: "PKR 395,900",
+    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Honda_EV-neo.jpg/800px-Honda_EV-neo.jpg",
+    specs: [
+      ["Type", "Electric Scooter"],
+      ["Motor", "DC Brushless Hub Motor"],
+      ["Policy", "NEV Policy Compliant"],
+      ["Brakes (Front)", "Disc"],
+      ["Brakes (Rear)", "Drum"],
+      ["Lighting", "Full LED"],
+      ["Charging", "Standard Home Outlet"],
+      ["Sales Tax", "Rs. 3,930 (NEV Rate)"],
+      ["Colors", "Red, Black, White"],
+      ["Drive", "Zero Emission"],
+    ],
+    colors: ["#CC0000", "#1a1a1a", "#f0f0f0"],
+    colorNames: ["Red", "Black", "White"]
+  }
+];
+
+// Build grid
+const grid = document.getElementById('bikeGrid');
+bikes.forEach((bike, i) => {
+  const card = document.createElement('div');
+  card.className = 'bike-card';
+  card.style.animationDelay = `${i * 0.08}s`;
+  card.innerHTML = `
+    <div class="card-img">
+      <img src="${bike.img}" alt="${bike.name}" loading="lazy"
+        onerror="this.src='https://via.placeholder.com/300x200/1a1a1a/CC0000?text=${encodeURIComponent(bike.name)}'"/>
+    </div>
+    <div class="card-overlay">
+      <div class="card-overlay-text">View Full Specs →</div>
+    </div>
+    <div class="card-body">
+      <div class="card-cc">${bike.cc}</div>
+      <div class="card-name">${bike.name}</div>
+      <div class="card-price">${bike.price} <span>Ex-Factory</span></div>
+      <div class="view-detail">View Details</div>
+    </div>
+  `;
+  card.addEventListener('click', () => openModal(bike));
+  grid.appendChild(card);
+});
+
+function openModal(bike) {
+  document.getElementById('modalImg').src = bike.img;
+  document.getElementById('modalImg').alt = bike.name;
+  document.getElementById('modalCC').textContent = bike.cc;
+  document.getElementById('modalName').textContent = bike.name;
+  document.getElementById('modalTagline').textContent = bike.tagline;
+  document.getElementById('modalPrice').textContent = bike.price;
+
+  const specsEl = document.getElementById('modalSpecs');
+  specsEl.innerHTML = bike.specs.map(([label, val]) => `
+    <div class="spec-row">
+      <span class="spec-label">${label}</span>
+      <span class="spec-val">${val}</span>
+    </div>
+  `).join('');
+
+  const colorsEl = document.getElementById('modalColors');
+  colorsEl.innerHTML = bike.colors.map((c, i) => `
+    <div class="color-dot" style="background:${c}" title="${bike.colorNames[i]}"></div>
+  `).join('');
+
+  document.getElementById('modalBackdrop').classList.add('active');
+  document.body.style.overflow = 'hidden';
+
+  // Scroll to modal smoothly
+  setTimeout(() => {
+    document.getElementById('modal').scrollTop = 0;
+    document.getElementById('modalBackdrop').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 50);
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('modalBackdrop')) closeModalDirect();
+}
+function closeModalDirect() {
+  document.getElementById('modalBackdrop').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalDirect(); });
+</script>
 </body>
 </html>
