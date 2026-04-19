@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlas Honda Motorcycles - Pakistan</title>
+    <style>
+        :root {
+            --primary-color: #d32f2f; /* Honda Red */
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+        }
+
+        .gallery-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .bike-card {
+            background: white;
+            width: 280px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .bike-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+        }
+
+        .bike-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .bike-info {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .bike-info h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.4rem;
+        }
+
+        .bike-info p {
+            margin: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Detail Section */
+        #details-section {
+            display: none;
+            max-width: 900px;
+            margin: 40px auto 60px;
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        #details-section.active {
+            display: block;
+            opacity: 1;
+        }
+
+        #detail-img {
+            max-width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        #detail-name {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        #detail-price {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .spec-box {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+
+        .spec-box h4 {
+            margin: 0 0 8px 0;
+            color: #666;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .spec-box p {
+            margin: 0;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Atlas Honda Motorcycles</h1>
+        <p>Explore the Latest Models & Prices</p>
+    </header>
+
+    <div class="gallery-container">
+        <div class="bike-card" onclick="showBikeDetails('cd70')">
+            <img src="https://placehold.co/600x400/eeeeee/d32f2f?text=Honda+CD+70" alt="Honda CD 70">
+            <div class="bike-info">
+                <h3>Honda CD 70</h3>
+                <p>PKR 159,900</p>
+            </div>
+        </div>
+
+        <div class="bike-card" onclick="showBikeDetails('pridor')">
+            <img src="https://placehold.co/600x400/eeeeee/d32f2f?text=Honda+Pridor" alt="Honda Pridor">
+            <div class="bike-info">
+                <h3>Honda Pridor</h3>
+                <p>PKR 211,900</p>
+            </div>
+        </div>
+
+        <div class="bike-card" onclick="showBikeDetails('cg125')">
+            <img src="https://placehold.co/600x400/eeeeee/d32f2f?text=Honda+CG+125" alt="Honda CG 125">
+            <div class="bike-info">
+                <h3>Honda CG 125</h3>
+                <p>PKR 238,500</p>
+            </div>
+        </div>
+
+        <div class="bike-card" onclick="showBikeDetails('cb150f')">
+            <img src="https://placehold.co/600x400/eeeeee/d32f2f?text=Honda+CB+150F" alt="Honda CB 150F">
+            <div class="bike-info">
+                <h3>Honda CB 150F</h3>
+                <p>PKR 499,900</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="details-section">
+        <img id="detail-img" src="" alt="Bike Image">
+        <h2 id="detail-name">Bike Name</h2>
+        <div id="detail-price">Price</div>
+
+        <div class="specs-grid">
+            <div class="spec-box">
+                <h4>Engine</h4>
+                <p id="detail-engine">--</p>
+            </div>
+            <div class="spec-box">
+                <h4>Transmission</h4>
+                <p id="detail-transmission">--</p>
+            </div>
+            <div class="spec-box">
+                <h4>Dry Weight</h4>
+                <p id="detail-weight">--</p>
+            </div>
+            <div class="spec-box">
+                <h4>Starting</h4>
+                <p id="detail-starting">--</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Database of bikes extracted directly from Atlas Honda official specs
+        const bikesData = {
+            'cd70': {
+                name: 'Honda CD 70',
+                price: 'PKR 159,900',
+                image: 'https://placehold.co/900x500/eeeeee/d32f2f?text=Honda+CD+70',
+                engine: '4-Stroke OHC Air Cooled 72 cm3',
+                transmission: '4 Speed Constant Mesh',
+                weight: '82 kg',
+                starting: 'Kick Start'
+            },
+            'pridor': {
+                name: 'Honda Pridor',
+                price: 'PKR 211,900',
+                image: 'https://placehold.co/900x500/eeeeee/d32f2f?text=Honda+Pridor',
+                engine: '4-Stroke OHC Air-Cooled 97.1 cm3',
+                transmission: '4 Speed Constant Mesh',
+                weight: '96 kg',
+                starting: 'Kick Start'
+            },
+            'cg125': {
+                name: 'Honda CG 125',
+                price: 'PKR 238,500',
+                image: 'https://placehold.co/900x500/eeeeee/d32f2f?text=Honda+CG+125',
+                engine: '4-Stroke OHV Air Cooled 125 cc',
+                transmission: '4 Speed Constant Mesh',
+                weight: '100 kg',
+                starting: 'Kick Start'
+            },
+            'cb150f': {
+                name: 'Honda CB 150F',
+                price: 'PKR 499,900',
+                image: 'https://placehold.co/900x500/eeeeee/d32f2f?text=Honda+CB+150F',
+                engine: '4-Stroke SOHC Air Cooled 150 cc',
+                transmission: '5 Speed Constant Mesh',
+                weight: '124 kg',
+                starting: 'Self Start / Kick Start'
+            }
+        };
+
+        function showBikeDetails(bikeId) {
+            const bike = bikesData[bikeId];
+            const detailsSection = document.getElementById('details-section');
+
+            // Populate the details dynamically
+            document.getElementById('detail-img').src = bike.image;
+            document.getElementById('detail-name').textContent = bike.name;
+            document.getElementById('detail-price').textContent = bike.price;
+            document.getElementById('detail-engine').textContent = bike.engine;
+            document.getElementById('detail-transmission').textContent = bike.transmission;
+            document.getElementById('detail-weight').textContent = bike.weight;
+            document.getElementById('detail-starting').textContent = bike.starting;
+
+            // Make the section visible
+            detailsSection.classList.add('active');
+
+            // Dynamic Smooth Scrolling to the detailed view
+            detailsSection.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start' 
+            });
+        }
+    </script>
+</body>
+</html>
